@@ -122,7 +122,7 @@ extension Fillable where Self : SVGGroup {
      Sets the fill color for all subelements of the `SVGGroup`
      */
     func fill(fillColor: String) {
-        self.attributesToApply["fill"] = fillColor
+        self.delayedAttributes["fill"] = fillColor
     }
     
     /**
@@ -130,14 +130,14 @@ extension Fillable where Self : SVGGroup {
      - SeeAlso: Core Animation's [Shape Fill Mode Value](https://developer.apple.com/documentation/quartzcore/cashapelayer/shape_fill_mode_values)
      */
     func fillRule(fillRule: String) {
-        self.attributesToApply["fill-rule"] = fillRule
+        self.delayedAttributes["fill-rule"] = fillRule
     }
     
     /**
      Sets the fill opacity for all subelements of the `SVGGroup` through its CGColor, not the CALayer's opacity property.
      */
     func fillOpacity(opacity: String) {
-        self.attributesToApply["opacity"] = opacity
+        self.delayedAttributes["opacity"] = opacity
     }
     
 }

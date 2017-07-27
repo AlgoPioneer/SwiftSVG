@@ -56,7 +56,7 @@ final class SVGGroup: SVGContainerElement {
     static let elementName = "g"
     
     /// Store all attributes and values to be applied after all known sublayers have been added to this container
-    internal var attributesToApply = [String : String]()
+    internal var delayedAttributes = [String : String]()
     
     /// A `CALayer` that will hold all sublayers of the `SVGGroup`
     internal var containerLayer = CALayer()
@@ -65,7 +65,7 @@ final class SVGGroup: SVGContainerElement {
     internal var supportedAttributes = [String : (String) -> ()]()
     
     /**
-     The function that is called after all of this group's subelements have been processed. It will apply all stored `attributesToApply` on all sublayers
+     The function that is called after all of this group's subelements have been processed. It will apply all stored `delayedAttributes` on all sublayers
      */
     func didProcessElement(in container: SVGContainerElement?) {
  
@@ -77,7 +77,7 @@ final class SVGGroup: SVGContainerElement {
             guard let thisShapeSublayer = thisSublayer as? CAShapeLayer else {
                 continue
             }
-            for (attribute, value) in self.attributesToApply {
+            for (attribute, value) in self.delayedAttributes {
                 self.applyAttribute(attribute, value: value, on: thisShapeSublayer)
             }
         }

@@ -42,13 +42,13 @@ public protocol DelaysApplyingAttributes {
     /// The attributes to apply to all sublayers after all subelements have been processed.
     /// - parameter Key: The name of an element's attribute such as `d`, `fill`, and `rx`.
     /// - parameter Value: The string value of the attribute passed from the parser, such as `"#ff00ee"`
-    var attributesToApply: [String : String] { get set }
+    var delayedAttributes: [String : String] { get set }
 }
 
 extension DelaysApplyingAttributes where Self : SVGElement {
     
     func applyDelayedAttributes() {
-        for (attribute, value) in self.attributesToApply {
+        for (attribute, value) in self.delayedAttributes {
             guard let closure = self.supportedAttributes[attribute] else {
                 continue
             }

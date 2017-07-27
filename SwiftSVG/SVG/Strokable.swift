@@ -163,7 +163,7 @@ extension Strokable where Self : SVGGroup {
      - SeeAlso: CAShapeLayer's [`lineCap`](https://developer.apple.com/documentation/quartzcore/cashapelayer/1521905-linecap) for supported values.
      */
     internal func strokeLineCap(lineCap: String) {
-        self.attributesToApply["stroke-linecap"] = lineCap
+        self.delayedAttributes["stroke-linecap"] = lineCap
     }
     
     /**
@@ -171,7 +171,7 @@ extension Strokable where Self : SVGGroup {
      - SeeAlso: CAShapeLayer's [`strokeColor`](https://developer.apple.com/documentation/quartzcore/cashapelayer/1521897-strokecolor)
      */
     internal func strokeColor(strokeColor: String) {
-        self.attributesToApply["stroke"] = strokeColor
+        self.delayedAttributes["stroke"] = strokeColor
     }
     
     /**
@@ -179,7 +179,7 @@ extension Strokable where Self : SVGGroup {
      - SeeAlso: CAShapeLayer's [`lineJoin`](https://developer.apple.com/documentation/quartzcore/cashapelayer/1522147-linejoin)
      */
     internal func strokeLineJoin(lineJoin: String) {
-        self.attributesToApply["stroke-linejoin"] = lineJoin
+        self.delayedAttributes["stroke-linejoin"] = lineJoin
     }
     
     /**
@@ -187,7 +187,7 @@ extension Strokable where Self : SVGGroup {
      - SeeAlso: CAShapeLayer's [`miterLimit`](https://developer.apple.com/documentation/quartzcore/cashapelayer/1521870-miterlimit)
      */
     internal func strokeMiterLimit(miterLimit: String) {
-        self.attributesToApply["stroke-miterlimit"] = miterLimit
+        self.delayedAttributes["stroke-miterlimit"] = miterLimit
     }
     
     /**
@@ -195,7 +195,7 @@ extension Strokable where Self : SVGGroup {
      - SeeAlso: CAShapeLayer's [`strokeWidth`](https://developer.apple.com/documentation/quartzcore/cashapelayer/1521890-linewidth)
      */
     internal func strokeWidth(strokeWidth: String) {
-        self.attributesToApply["stroke-width"] = strokeWidth
+        self.delayedAttributes["stroke-width"] = strokeWidth
     }
     
 }

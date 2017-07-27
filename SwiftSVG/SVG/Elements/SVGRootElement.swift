@@ -44,7 +44,7 @@ struct SVGRootElement: SVGContainerElement {
     static let elementName = "svg"
     
     // :nodoc:
-    var attributesToApply = [String : String]()
+    var delayedAttributes = [String : String]()
     
     // :nodoc:
     var containerLayer = CALayer()

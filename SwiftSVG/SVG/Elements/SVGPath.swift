@@ -45,7 +45,7 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
     /**
      Attributes that are applied after the path has been processed
      */
-    var attributesToApply = [String : String]()
+    var delayedAttributes = [String : String]()
     
     /// :nodoc:
     var asyncParseManager: CanManageAsychronousParsing? = nil
@@ -120,7 +120,7 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
      */
     func clipRule(_ clipRule: String) {
         guard let thisPath = self.svgLayer.path else {
-            self.attributesToApply["clip-rule"] = clipRule
+            self.delayedAttributes["clip-rule"] = clipRule
             return
         }
         guard clipRule == "evenodd" else {
