@@ -34,6 +34,7 @@
     import AppKit
 #endif
 
+
 /**
  A protocol that describes an instance that can store SVG sublayers and can apply a single attributes to all sublayers.
  */
@@ -45,4 +46,5 @@ public protocol SVGContainerElement: SVGElement, DelaysApplyingAttributes, Filla
      */
     var containerLayer: CALayer { get set }
 }
+
 
