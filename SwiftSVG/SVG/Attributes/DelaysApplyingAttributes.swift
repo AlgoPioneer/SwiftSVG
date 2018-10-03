@@ -55,15 +55,12 @@ extension DelaysApplyingAttributes where Self : SVGElement {
     /**
      Applies any saved and supported attributes
      */
-    public mutating func applyDelayedAttributes() {
+    public func applyDelayedAttributes() {
         for (attribute, value) in self.delayedAttributes {
             guard let closure = self.supportedAttributes[attribute] else {
                 continue
             }
             closure(value)
         }
-      
-      self.supportedAttributes.removeAll()
-      self.delayedAttributes.removeAll()
     }
 }

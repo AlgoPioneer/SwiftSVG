@@ -64,6 +64,7 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
     /// :nodoc:
     internal init() { }
     
+    
     /**
      Initializer to to set the `svgLayer`'s cgPath. The path string does not have to be a single path for the whole element, but can include multiple subpaths in the `d` attribute. For instance, the following is a valid path string to pass:
      ```
@@ -86,7 +87,7 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
             
             let pathDPath = UIBezierPath()
             pathDPath.move(to: CGPoint.zero)
-
+            
             let parsePathClosure = {
                 var previousCommand: PreviousCommand? = nil
                 for thisPathCommand in PathDLexer(pathString: workingString) {
@@ -100,11 +101,10 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
                 let concurrent = DispatchQueue(label: "com.straussmade.swiftsvg.path.concurrent", attributes: .concurrent)
                 
                 concurrent.async(execute: parsePathClosure)
-                concurrent.async(flags: .barrier) { [weak self] in
-                    guard var this = self else { return }
-                    this.svgLayer.path = pathDPath.cgPath
-                    this.applyDelayedAttributes()
-                    this.asyncParseManager?.finishedProcessing(this.svgLayer)
+                concurrent.async(flags: .barrier) {
+                    self.svgLayer.path = pathDPath.cgPath
+                    self.applyDelayedAttributes()
+                    self.asyncParseManager?.finishedProcessing(self.svgLayer)
                 }
                 
             } else {

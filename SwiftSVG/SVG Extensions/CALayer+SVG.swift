@@ -80,7 +80,7 @@ public extension CALayer {
         
         let dispatchQueue = DispatchQueue(label: "com.straussmade.swiftsvg", attributes: .concurrent)
         
-        dispatchQueue.async { [weak self] in
+        dispatchQueue.async {
             
             let parserToUse: SVGParser
             if let parser = parser {
@@ -96,7 +96,7 @@ public extension CALayer {
                     }
                     
                     DispatchQueue.main.safeAsync {
-                        self?.addSublayer(svgLayer)
+                        self.addSublayer(svgLayer)
                     }
                     completion(svgLayer)
                 }
