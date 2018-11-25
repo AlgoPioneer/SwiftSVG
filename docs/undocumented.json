@@ -65,13 +65,6 @@
     },
     {
       "file": "/Users/tarragon/Google Drive/CODE/iOS/SwiftSVG/SwiftSVG/SVG/Attributes/Identifiable.swift",
-      "line": null,
-      "symbol": "Identifiable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tarragon/Google Drive/CODE/iOS/SwiftSVG/SwiftSVG/SVG/Attributes/Identifiable.swift",
       "line": 32,
       "symbol": "Identifiable",
       "symbol_kind": "source.lang.swift.decl.protocol",
@@ -194,13 +187,6 @@
       "line": 50,
       "symbol": "Stack.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tarragon/Google Drive/CODE/iOS/SwiftSVG/SwiftSVG/SVG/Helpers/Unown.swift",
-      "line": 11,
-      "symbol": "unown(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
