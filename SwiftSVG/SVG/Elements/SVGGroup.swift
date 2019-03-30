@@ -100,7 +100,7 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the fill color on all of this group's subelements
      */
-    func fillGroup(_ fillColor: String, on layer: CAShapeLayer) {
+    fileprivate func fillGroup(_ fillColor: String, on layer: CAShapeLayer) {
         guard let fillColor = UIColor(svgString: fillColor) else {
             return
         }
@@ -110,7 +110,7 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the fill rule on all of this group's subelements
      */
-    func fillRuleGroup(_ fillRule: String, on layer: CAShapeLayer) {
+    fileprivate func fillRuleGroup(_ fillRule: String, on layer: CAShapeLayer) {
         guard fillRule == "evenodd" else {
             return
         }
@@ -120,7 +120,7 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the fill opacity on all of this group's subelements
      */
-    func fillOpacityGroup(_ opacity: String, on layer: CAShapeLayer) {
+    fileprivate func fillOpacityGroup(_ opacity: String, on layer: CAShapeLayer) {
         guard let opacity = Float(opacity) else {
             return
         }
@@ -134,14 +134,14 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the stroke line cap on all of this group's subelements
      */
-    func strokeLineCapGroup(lineCap: String, on layer: CAShapeLayer) {
+    fileprivate func strokeLineCapGroup(lineCap: String, on layer: CAShapeLayer) {
         layer.lineCap = CAShapeLayerLineCap(rawValue: lineCap)
     }
     
     /**
      Function that applies the stroke color on all of this group's subelements
      */
-    func strokeColorGroup(strokeColor: String, on layer: CAShapeLayer) {
+    fileprivate func strokeColorGroup(strokeColor: String, on layer: CAShapeLayer) {
         guard let strokeColor = UIColor(svgString: strokeColor) else {
             return
         }
@@ -151,14 +151,14 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the stroke line join on all of this group's subelements
      */
-    func strokeLineJoinGroup(lineJoin: String, on layer: CAShapeLayer) {
+    fileprivate func strokeLineJoinGroup(lineJoin: String, on layer: CAShapeLayer) {
         layer.lineJoin = CAShapeLayerLineJoin(rawValue: lineJoin)
     }
     
     /**
      Function that applies the miter limit on all of this group's subelements
      */
-    func strokeMiterLimitGroup(miterLimit: String, on layer: CAShapeLayer) {
+    fileprivate func strokeMiterLimitGroup(miterLimit: String, on layer: CAShapeLayer) {
         guard let miterLimit = CGFloat(miterLimit) else {
             return
         }
@@ -168,7 +168,7 @@ fileprivate extension SVGGroup {
     /**
      Function that applies the streoke width on all of this group's subelements
      */
-    func strokeWidthGroup(strokeWidth: String, on layer: CAShapeLayer) {
+    fileprivate func strokeWidthGroup(strokeWidth: String, on layer: CAShapeLayer) {
         guard let strokeWidth = CGFloat(strokeWidth) else {
             return
         }

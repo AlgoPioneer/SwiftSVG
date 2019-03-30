@@ -44,7 +44,7 @@ public extension UIBezierPath {
      Parses a single path string. Parses synchronously.
      - Parameter pathString: The path `d` string to parse.
      */
-    convenience init(pathString: String) {
+    public convenience init(pathString: String) {
         let singlePath = SVGPath(singlePathString: pathString)
         guard let cgPath = singlePath.svgLayer.path else {
             self.init()
@@ -59,7 +59,7 @@ public extension UIBezierPath {
     
     
     @available(*, deprecated, message: "This method is deprecated. If you want to parse a single path, instantiate a new instance of SVGPath using the SVGPath(singlePathString:) initializer and pass the path string.")
-    class func pathWithSVGURL(_ SVGURL: URL) -> UIBezierPath? {
+    public class func pathWithSVGURL(_ SVGURL: URL) -> UIBezierPath? {
         assert(false, "This method is deprecated")
         return nil
     }
