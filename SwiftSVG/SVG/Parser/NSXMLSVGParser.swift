@@ -127,7 +127,6 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
     open func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         guard let elementType = self.supportedElements?.tags[elementName] else {
-            print("Not supported element \(elementName) is ignored")
             return
         }
         
