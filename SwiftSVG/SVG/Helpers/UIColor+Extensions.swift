@@ -46,23 +46,6 @@ struct NamedColors {
         "none": UIColor.clear.cgColor
     ]
     
-    private let fromPlist: [String : CGColor] = {
-        guard let path = Bundle.main.path(forResource: "CSSNamedColors", ofType: "plist") else {
-            assert(false, "No plist found. if you plan on using named CSS colors, please make sure this file is in the main bundle")
-            return [:]
-        }
-        guard let valuesAsHex = NSDictionary(contentsOfFile: path) as? [String : String] else {
-            return [:]
-        }
-        return valuesAsHex
-            .compactMapValues({ (hexString) -> CGColor? in
-                guard let asColor = UIColor(hexString: hexString)?.cgColor else {
-                    return nil
-                }
-                return asColor
-            })
-    }()
-    
     /// Subscript to access the named color. Must be one of the officially supported values listed [here](https://www.w3.org/TR/SVGColor12/#icccolor)
     subscript(index: String) -> CGColor? {
         return self.colorDictionary[index]
@@ -75,9 +58,9 @@ public extension CGColor {
     /**
      Lazily loaded instance of `NamedColors`
      */
-    fileprivate static var named: NamedColors = {
+    fileprivate static var named: NamedColors {
         return NamedColors()
-    }()
+    }
 }
 
 public extension UIColor {
@@ -103,7 +86,7 @@ public extension UIColor {
             return
         }
         
-        self.init(cssName: svgString)
+        self.init(namedCSS: svgString)
     }
     
     /**
@@ -181,8 +164,8 @@ public extension UIColor {
      Convenience initializer that creates a new UIColor from a CSS3 named color
      - SeeAlso: See here for all the colors: [https://www.w3.org/TR/css3-color/#svg-color](https://www.w3.org/TR/css3-color/#svg-color)
      */
-	convenience init?(cssName: String) {
-        guard let namedColor = CGColor.named[cssName] else {
+	convenience init?(namedCSS: String) {
+        guard let namedColor = CGColor.named[namedCSS] else {
             return nil
         }
         self.init(cgColor: namedColor)
