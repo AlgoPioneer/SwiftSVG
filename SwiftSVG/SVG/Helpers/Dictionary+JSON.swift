@@ -1,5 +1,5 @@
 //
-//  Print.swift
+//  Dictionary+JSON.swift
 //  SwiftSVG
 //
 //
@@ -28,8 +28,19 @@
 
 import Foundation
 
-func print(_ item: @autoclosure () -> Any, separator: String = " ", terminator: String = "\n") {
-    #if DEBUG
-    Swift.print(item(), separator: separator, terminator: terminator)
-    #endif
+extension Dictionary where Key: Decodable, Value: Decodable {
+    
+    init?(jsonFile name: String?) {
+        guard let jsonPath = Bundle(for: NSXMLSVGParser.self).url(forResource: name, withExtension: "json") else {
+            return nil
+        }
+        guard let jsonData = try? Data(contentsOf: jsonPath) else {
+            return nil
+        }
+        guard let asDictionary = try? JSONDecoder().decode([Key : Value].self, from: jsonData) else {
+            return nil
+        }
+        self = asDictionary
+    }
+    
 }
